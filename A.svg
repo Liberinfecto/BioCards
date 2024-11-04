@@ -4,21 +4,27 @@
       #front, #back {
         transform-origin: center;
         transition: transform 0.6s;
-        backface-visibility: hidden;
+      }
+      #front {
+        opacity: 1;
+        transition: opacity 0.3s, transform 0.6s;
       }
       #back {
-        transform: rotateY(180deg);
+        opacity: 0;
+        transition: opacity 0.3s, transform 0.6s;
       }
       #card.flipped #front {
-        transform: rotateY(180deg);
+        opacity: 0;
+        pointer-events: none;
       }
       #card.flipped #back {
-        transform: rotateY(360deg);
+        opacity: 1;
+        pointer-events: auto;
       }
     </style>
   </defs>
 
-  <g id="container" style="transform-style: preserve-3d; perspective: 1000px;">
+  <g id="container">
     <g id="card" onclick="this.classList.toggle('flipped')">
       <!-- Frente -->
       <g id="front">
